@@ -264,6 +264,10 @@ class MainActivity : ComponentActivity() {
                         PriceSettingsDialog(
                             menu = state.menu,
                             onSavePrices = { viewModel.updatePrices(it) },
+                            onAddProduct = { name, price, group, stockType, badge ->
+                                viewModel.addProduct(name, price, group, stockType, badge)
+                            },
+                            onDeleteProduct = { viewModel.deleteProduct(it) },
                             onResetDefaults = { viewModel.resetPricesToDefault() },
                             onDismiss = { viewModel.showPriceSettings.value = false }
                         )

@@ -340,7 +340,7 @@ private fun MainItemCard(
     Card3D(
         modifier = modifier.heightIn(min = 144.dp),
         isActive = isSelected,
-        onClick = { onIncrement(1) }
+        onClick = null
     ) {
         Column(
             modifier = Modifier
@@ -407,8 +407,8 @@ private fun MainItemCard(
                 // Minus button
                 Box(
                     modifier = Modifier
-                        .size(34.dp)
-                        .clip(RoundedCornerShape(10.dp))
+                        .size(38.dp)
+                        .clip(RoundedCornerShape(11.dp))
                         .background(CounterMinusBg)
                         .clickable { onIncrement(-1) },
                     contentAlignment = Alignment.Center
@@ -417,7 +417,7 @@ private fun MainItemCard(
                         imageVector = Icons.Rounded.Remove,
                         contentDescription = "Минус",
                         tint = TextWhite,
-                        modifier = Modifier.size(16.dp)
+                        modifier = Modifier.size(18.dp)
                     )
                 }
 
@@ -425,12 +425,13 @@ private fun MainItemCard(
                 Box(
                     modifier = Modifier
                         .weight(1f)
-                        .clickable(onClick = onOpenQty),
+                        .clickable(onClick = onOpenQty)
+                        .padding(vertical = 6.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = "$qty шт",
-                        fontSize = 13.sp,
+                        fontSize = 14.sp,
                         fontWeight = FontWeight.Black,
                         color = if (isSelected) GoldNeon else TextMuted
                     )
@@ -439,8 +440,8 @@ private fun MainItemCard(
                 // Plus button
                 Box(
                     modifier = Modifier
-                        .size(34.dp)
-                        .clip(RoundedCornerShape(10.dp))
+                        .size(38.dp)
+                        .clip(RoundedCornerShape(11.dp))
                         .background(
                             androidx.compose.ui.graphics.Brush.verticalGradient(
                                 listOf(Color(0xFFFDE047), Color(0xFFEAB308), Color(0xFFCA8A04))
@@ -453,7 +454,7 @@ private fun MainItemCard(
                         imageVector = Icons.Rounded.Add,
                         contentDescription = "Плюс",
                         tint = Color(0xFF090D16),
-                        modifier = Modifier.size(18.dp)
+                        modifier = Modifier.size(20.dp)
                     )
                 }
             }
@@ -475,7 +476,7 @@ private fun AddonItemCard(
         modifier = modifier,
         isActive = isSelected,
         cornerRadius = 16.dp,
-        onClick = { onIncrement(1) }
+        onClick = null
     ) {
         Column(
             modifier = Modifier
@@ -511,8 +512,8 @@ private fun AddonItemCard(
             ) {
                 Box(
                     modifier = Modifier
-                        .size(24.dp)
-                        .clip(RoundedCornerShape(6.dp))
+                        .size(28.dp)
+                        .clip(RoundedCornerShape(7.dp))
                         .background(CounterMinusBg)
                         .clickable { onIncrement(-1) },
                     contentAlignment = Alignment.Center
@@ -521,13 +522,13 @@ private fun AddonItemCard(
                         imageVector = Icons.Rounded.Remove,
                         contentDescription = null,
                         tint = TextWhite,
-                        modifier = Modifier.size(12.dp)
+                        modifier = Modifier.size(14.dp)
                     )
                 }
 
                 Text(
                     text = "$qty",
-                    fontSize = 11.sp,
+                    fontSize = 12.sp,
                     fontWeight = FontWeight.Black,
                     color = if (isSelected) GoldNeon else TextMuted,
                     modifier = Modifier.clickable(onClick = onOpenQty)
@@ -535,8 +536,8 @@ private fun AddonItemCard(
 
                 Box(
                     modifier = Modifier
-                        .size(24.dp)
-                        .clip(RoundedCornerShape(6.dp))
+                        .size(28.dp)
+                        .clip(RoundedCornerShape(7.dp))
                         .background(GoldNeon)
                         .clickable { onIncrement(1) },
                     contentAlignment = Alignment.Center
@@ -545,7 +546,7 @@ private fun AddonItemCard(
                         imageVector = Icons.Rounded.Add,
                         contentDescription = null,
                         tint = Color(0xFF090D16),
-                        modifier = Modifier.size(14.dp)
+                        modifier = Modifier.size(16.dp)
                     )
                 }
             }
@@ -567,7 +568,7 @@ private fun SnackItemCard(
         modifier = modifier,
         isActive = isSelected,
         cornerRadius = 18.dp,
-        onClick = { onIncrement(1) }
+        onClick = null
     ) {
         Row(
             modifier = Modifier
@@ -604,7 +605,7 @@ private fun SnackItemCard(
                 if (qty > 0) {
                     Box(
                         modifier = Modifier
-                            .size(26.dp)
+                            .size(28.dp)
                             .clip(RoundedCornerShape(8.dp))
                             .background(CounterMinusBg)
                             .clickable { onIncrement(-1) },
@@ -614,7 +615,7 @@ private fun SnackItemCard(
                             imageVector = Icons.Rounded.Remove,
                             contentDescription = null,
                             tint = TextWhite,
-                            modifier = Modifier.size(12.dp)
+                            modifier = Modifier.size(14.dp)
                         )
                     }
                     Text(
@@ -630,7 +631,7 @@ private fun SnackItemCard(
 
                 Box(
                     modifier = Modifier
-                        .size(26.dp)
+                        .size(30.dp)
                         .clip(RoundedCornerShape(8.dp))
                         .background(GoldNeon)
                         .clickable { onIncrement(1) },
@@ -640,7 +641,7 @@ private fun SnackItemCard(
                         imageVector = Icons.Rounded.Add,
                         contentDescription = null,
                         tint = Color(0xFF090D16),
-                        modifier = Modifier.size(14.dp)
+                        modifier = Modifier.size(16.dp)
                     )
                 }
             }

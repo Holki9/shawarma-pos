@@ -299,7 +299,35 @@ class PosViewModel(application: Application) : AndroidViewModel(application) {
         showToast("Остатки склада скорректированы")
     }
 
-    // ================= НАСТРОЙКА ЦЕН МЕНЮ =================
+    // ================= НАСТРОЙКА И УПРАВЛЕНИЕ МЕНЮ =================
+
+    fun addProduct(name: String, price: Double, group: MenuGroup, stockType: StockType, badge: String?) {
+        val state = _appState.value
+        val newId = "custom_${System.currentTimeMillis()}"
+        val newItem = MenuItem(
+            id = newId,
+            name = name.trim(),
+            price = price.coerceAtLeast(0.0),
+            group = group,
+            stockType = stockType,
+            badge = badge?.trim()?.ifBlank { null }
+        )
+        val updatedMenu = state.menu + newItem
+        persist(state.copy(menu = updatedMenu))
+        showToast("Товар «${newItem.name}» добавлен в меню!")
+    }
+
+    fun deleteProduct(itemId: String) {
+        val state = _appState.value
+        val item = state.menu.find { it.id == itemId }
+        val updatedMenu = state.menu.filter { it.id != itemId }
+        // Also remove from draft if it was selected
+        _draftOrder.update { current ->
+            current.filterKeys { it != itemId }
+        }
+        persist(state.copy(menu = updatedMenu))
+        showToast("Товар «${item?.name ?: ""}» удалён из меню")
+    }
 
     fun updatePrice(itemId: String, newPrice: Double) {
         val state = _appState.value
@@ -321,13 +349,8 @@ class PosViewModel(application: Application) : AndroidViewModel(application) {
 
     fun resetPricesToDefault() {
         val state = _appState.value
-        val defaultMap = DefaultMenu.items.associate { it.id to it.price }
-        val updatedMenu = state.menu.map { item ->
-            val defPrice = defaultMap[item.id] ?: item.price
-            item.copy(price = defPrice)
-        }
-        persist(state.copy(menu = updatedMenu))
-        showToast("Цены сброшены на стандартные")
+        persist(state.copy(menu = DefaultMenu.items))
+        showToast("Меню сброшено на точные цены с фото")
     }
 
     // ================= ОПЕРАЦИИ (РЕДАКТИРОВАНИЕ И УДАЛЕНИЕ) =================

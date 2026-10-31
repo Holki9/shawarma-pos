@@ -23,6 +23,7 @@ class PosRepository(private val context: Context) {
             val shiftOpen = root.optBoolean("shiftOpen", true)
             val lavashPackSize = root.optInt("lavashPackSize", 10)
             val selectedExpenseCategory = root.optString("selectedExpenseCategory", "Свободный расход")
+            val menuVersion = root.optInt("menuVersion", 1)
 
             // Stock
             val stockObj = root.optJSONObject("stock")
@@ -35,10 +36,10 @@ class PosRepository(private val context: Context) {
                 )
             } else Stock()
 
-            // Menu (with user updated prices)
+            // Menu (with version migration)
             val menuArr = root.optJSONArray("menu")
             val menuList = mutableListOf<MenuItem>()
-            if (menuArr != null && menuArr.length() > 0) {
+            if (menuArr != null && menuArr.length() > 0 && menuVersion >= DefaultMenu.CURRENT_VERSION) {
                 for (i in 0 until menuArr.length()) {
                     val mObj = menuArr.getJSONObject(i)
                     val id = mObj.getString("id")
@@ -137,6 +138,7 @@ class PosRepository(private val context: Context) {
             root.put("shiftOpen", state.shiftOpen)
             root.put("lavashPackSize", state.lavashPackSize)
             root.put("selectedExpenseCategory", state.selectedExpenseCategory)
+            root.put("menuVersion", DefaultMenu.CURRENT_VERSION)
 
             // Stock
             val stockObj = JSONObject().apply {
