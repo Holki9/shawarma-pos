@@ -54,6 +54,7 @@ fun HeaderView(
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .statusBarsPadding()
             .padding(horizontal = 14.dp, vertical = 6.dp)
     ) {
         // Top status and fast action row

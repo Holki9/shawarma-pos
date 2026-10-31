@@ -175,21 +175,29 @@ fun PosScreen(
                     )
                 }
 
-                FlowRow(
+                Column(
                     modifier = Modifier.fillMaxWidth(),
-                    maxItemsInEachRow = 2,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    mainItems.forEach { item ->
-                        val qty = draftOrder[item.id] ?: 0
-                        MainItemCard(
-                            item = item,
-                            qty = qty,
-                            onIncrement = { delta -> onIncrement(item.id, delta) },
-                            onOpenQty = { onOpenQtyDialog(item) },
-                            modifier = Modifier.weight(1f)
-                        )
+                    mainItems.chunked(2).forEach { rowItems ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            rowItems.forEach { item ->
+                                val qty = draftOrder[item.id] ?: 0
+                                MainItemCard(
+                                    item = item,
+                                    qty = qty,
+                                    onIncrement = { delta -> onIncrement(item.id, delta) },
+                                    onOpenQty = { onOpenQtyDialog(item) },
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                            if (rowItems.size == 1) {
+                                Spacer(modifier = Modifier.weight(1f))
+                            }
+                        }
                     }
                 }
             }
@@ -228,21 +236,29 @@ fun PosScreen(
                     )
                 }
 
-                FlowRow(
+                Column(
                     modifier = Modifier.fillMaxWidth(),
-                    maxItemsInEachRow = 3,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    addonItems.forEach { item ->
-                        val qty = draftOrder[item.id] ?: 0
-                        AddonItemCard(
-                            item = item,
-                            qty = qty,
-                            onIncrement = { delta -> onIncrement(item.id, delta) },
-                            onOpenQty = { onOpenQtyDialog(item) },
-                            modifier = Modifier.weight(1f)
-                        )
+                    addonItems.chunked(3).forEach { rowItems ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            rowItems.forEach { item ->
+                                val qty = draftOrder[item.id] ?: 0
+                                AddonItemCard(
+                                    item = item,
+                                    qty = qty,
+                                    onIncrement = { delta -> onIncrement(item.id, delta) },
+                                    onOpenQty = { onOpenQtyDialog(item) },
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                            repeat(3 - rowItems.size) {
+                                Spacer(modifier = Modifier.weight(1f))
+                            }
+                        }
                     }
                 }
             }
@@ -281,21 +297,29 @@ fun PosScreen(
                     )
                 }
 
-                FlowRow(
+                Column(
                     modifier = Modifier.fillMaxWidth(),
-                    maxItemsInEachRow = 2,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    snackItems.forEach { item ->
-                        val qty = draftOrder[item.id] ?: 0
-                        SnackItemCard(
-                            item = item,
-                            qty = qty,
-                            onIncrement = { delta -> onIncrement(item.id, delta) },
-                            onOpenQty = { onOpenQtyDialog(item) },
-                            modifier = Modifier.weight(1f)
-                        )
+                    snackItems.chunked(2).forEach { rowItems ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            rowItems.forEach { item ->
+                                val qty = draftOrder[item.id] ?: 0
+                                SnackItemCard(
+                                    item = item,
+                                    qty = qty,
+                                    onIncrement = { delta -> onIncrement(item.id, delta) },
+                                    onOpenQty = { onOpenQtyDialog(item) },
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                            if (rowItems.size == 1) {
+                                Spacer(modifier = Modifier.weight(1f))
+                            }
+                        }
                     }
                 }
             }
