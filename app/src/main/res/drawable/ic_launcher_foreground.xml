@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Glowing outer aura -->
+    <path
+        android:strokeColor="#3010B981"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M28,80 L80,28" />
+
+    <!-- Shawarma Wrap Outer Body (Tortilla/Lavash) -->
+    <path
+        android:fillColor="#F6C667"
+        android:pathData="M35,77 C28,70 30,56 42,44 L66,20 C72,14 80,16 86,22 C92,28 94,36 88,42 L64,66 C52,78 38,80 35,77 Z" />
+
+    <!-- Inner fold shaded edge -->
+    <path
+        android:fillColor="#DE9E36"
+        android:pathData="M37,75 C31,69 33,58 43,48 L65,26 C69,22 74,22 77,25 C70,32 50,52 41,61 C37,65 35,72 37,75 Z" />
+
+    <!-- Grill Marks on Lavash -->
+    <path
+        android:strokeColor="#B45309"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:pathData="M48,58 L56,50 M54,64 L62,56 M60,70 L68,62 M42,52 L50,44" />
+
+    <!-- Fresh Greens (Lettuce/Cilantro peaking out at top) -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M70,18 C72,15 76,14 78,16 C81,18 80,22 78,24 C75,22 72,20 70,18 Z" />
+    <path
+        android:fillColor="#34D399"
+        android:pathData="M78,16 C82,14 86,16 87,19 C85,21 82,21 80,20 Z" />
+
+    <!-- Juicy Tomato/Sauce Drop -->
+    <path
+        android:fillColor="#EF4444"
+        android:pathData="M74,25 C76,23 79,25 78,28 C76,29 74,27 74,25 Z" />
+
+    <!-- Neon POS Badge in corner -->
+    <path
+        android:fillColor="#0E172A"
+        android:strokeColor="#FACC15"
+        android:strokeWidth="1.5"
+        android:pathData="M24,68 L44,68 C47,68 49,70 49,73 L49,83 C49,86 47,88 44,88 L24,88 C21,88 19,86 19,73 L19,73 C19,70 21,68 24,68 Z" />
+
+    <!-- Lightning / Bolt inside POS Badge -->
+    <path
+        android:fillColor="#FACC15"
+        android:pathData="M35,70 L30,78 L34,78 L33,86 L39,77 L35,77 Z" />
+
+    <!-- Sparkle Stars -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M26,30 L27.5,33.5 L31,35 L27.5,36.5 L26,40 L24.5,36.5 L21,35 L24.5,33.5 Z" />
+    <path
+        android:fillColor="#A855F7"
+        android:pathData="M84,65 L85,67.5 L87.5,68.5 L85,69.5 L84,72 L83,69.5 L80.5,68.5 L83,67.5 Z" />
+</vector>
